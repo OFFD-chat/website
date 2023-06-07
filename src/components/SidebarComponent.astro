@@ -1,0 +1,43 @@
+---
+export interface Props {
+    title: string;
+    icon: string;
+    href: string;
+}
+
+const { href, title, icon } = Astro.props;
+---
+
+<div class={title + "-button"}>
+    <a href={href}>
+        <i class={icon}></i>
+        <span>{title}</span>
+    </a>
+</div>
+
+<style>
+    a {
+        display: block;
+        padding: 1rem;
+        color: #000;
+        text-decoration: none;
+        font-size: 1.5rem;
+        float: left;
+        text-align: center;
+    }
+
+    .active {
+        background-color: #000;
+        color: #fff;
+    }
+
+    a:hover {
+        background-color: #474746;
+        color: #fff;
+        transition-duration: 0.25s;
+    }
+
+    i {
+        margin-right: 1rem;
+    }
+</style>

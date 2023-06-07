@@ -1,0 +1,80 @@
+---
+import SidebarComponent from './SidebarComponent.astro';
+import SidebarSocialComponent from './SidebarSocialComponent.astro';
+---
+
+<div class="sidebar">
+    <h1>OFFD.chat</h1>
+
+    <SidebarComponent href="/" title="Home" icon="fa-solid fa-house"/>
+    <SidebarComponent href="/about" title="About" icon="fa-solid fa-info-circle"/>
+    <SidebarComponent href="/staff" title="Staff" icon="fa-solid fa-clipboard-user"/>
+
+    <div class="sidebar_socials">
+        <SidebarSocialComponent href="https://discord.gg/kE2FCpx4Zg" icon="fa-brands fa-discord"/>
+    </div
+</div>
+
+<script>
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarLinks = sidebar.querySelectorAll('a');
+
+    sidebarLinks.forEach((link) => {
+        if (link.href === window.location.href) {
+            link.classList.add('active');
+        }
+    });
+</script>
+
+<style>
+    .sidebar {
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to right, #f0e05f, #30bb73, #30e0c0);
+        width: 100%;
+        position: fixed;
+        overflow: hidden;
+        display: inline-block;
+    }
+    .sidebar__logo {
+        display: flex;
+        align-items: center;
+        padding: 1rem
+    }
+
+    .sidebar h1 {
+        float: left;
+        padding-right: 2rem;
+        padding-left: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    .sidebar__logo img {
+        margin-right: 1rem;
+        border-radius: 3rem;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 1rem;
+        color: #000;
+        text-decoration: none;
+        font-size: 1.5rem;
+    }
+
+    .sidebar .active {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .sidebar a:hover {
+        background-color: #474746;
+        color: #fff;
+        transition-duration: 0.25s;
+    }
+    .sidebar_socials {
+        float: right;
+        padding: 0;
+    }
+
+</style>

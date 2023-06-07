@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<Layout title="Staff | OFFD">
+    <main>
+        <h1>Meet the team</h1>
+        <ul role="list" class="staff-grid">
+        </ul>
+    </main>
+</Layout>
+
+<script>
+    let staffListHTML = document.getElementsByClassName('staff-grid')[0]
+    let staff = fetch('https://cms.offd.chat/api/staffs', {headers: {'Authorization': 'bearer ed7465e04fb36ab8458a3837650eda574684490d9ccb6784ae0b7be0cce8328c5b97a2315af934ad91091d845749db72c174bb5ed4309fb60ff82a6be298ecb550bc0ec396fe0f786a237e52964e0dace2d50ee78d10a6f52af0284cf27a2466aeb4f761542e4ceee5f2c6af45f8ca9f6aaeb8e568b5fc2bf6581901923041e7'}})
+        .then(response => response.json())
+        .then(data => {
+            for (let member in data.data) {
+                member = data.data[member].attributes
+
+                console.log(member)
+                staffListHTML.innerHTML += `
+                <li class="staff-card">
+					<img src="${member.avatar}" alt="${member.preffered_name}'s avatar">
+					
+					<p>${member.preffered_name} | ${member.role}</p>				
+				</li>
+                `
+            }
+
+            return data
+        })
+        .catch(error => {
+            console.error(error)
+
+            staffListHTML.innerHTML = `
+                An error has occurred.
+                
+                
+                <span class="code">
+                    ${error}
+                </span>
+           `
+        })
+
+</script>
+
+<style is:inline>
+    main {
+        margin: auto;
+        padding: 1em;
+        max-width: 60ch;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .text-gradient {
+        font-weight: 900;
+        background-image: linear-gradient(to right, #f0e05f, #30bb73, #30e0c0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 100% 200%;
+        background-position-y: 100%;
+        border-radius: 0.4rem;
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    .staff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 1rem;
+    }
+
+    .staff-card {
+        list-style: none;
+        display: flex;
+        padding: 0.25rem;
+        background-image: linear-gradient(to right, #f0e05f, #30bb73, #30e0c0);
+        border-radius: 3rem;
+        background-position: 100%;
+        transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        width: 12rem;
+        height: 12rem;
+
+        flex-direction: column;
+    }
+    .staff-card img {
+        border-radius: 20%;
+        width: 81.5%;
+        height: 81.5%;
+        margin: 0 auto;
+        display: block;
+        clear: both;
+    }
+
+    .staff-card p {
+        text-align: center;
+        margin-top: 0.25rem;
+    }
+</style>

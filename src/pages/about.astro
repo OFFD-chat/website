@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<Layout title="About Us | OFFD.chat">
+    <main>
+        <h1>About us...</h1>
+        <p>
+            The Oasis for friendly discussion is a Discord server that was founded to be exactly what it says.
+            On discord, and on the internet in general, it can be hard to find a place that has the right balance between allowing controversial topics being discussed while also restricting outright bigotry and hatred.
+            This server, with it's dedicated mods and visionary owner, does a better then average job of striking a good balance between these two extremes.
+            Please come join us and enjoy controversial debates executed in a respectful manor, enjoy some fun memes, and make new friends along the way.
+        </p>
+        <p><span class="quote">- Leaf on the Wind🇨🇦</span></p>
+    </main>
+</Layout>
+
+<style>
+    main {
+        margin: auto;
+        padding: 1em;
+        max-width: 60ch;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .text-gradient {
+        font-weight: 900;
+        background-image: linear-gradient(to right, #f0e05f, #30bb73, #30e0c0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 100% 200%;
+        background-position-y: 100%;
+        border-radius: 0.4rem;
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    .quote {
+        font-style: italic;
+    }
+</style>

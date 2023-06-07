@@ -1,36 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import HomeContentCard from '../components/HomeContentCard.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="OFFD.chat">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
+		<h1>Welcome to <span class="text-gradient">OFFD</span>!</h1>
+
+		<p class="quote">Oasis For Friendly Discussions</p>
+
+		<ul role="list" class="grid">
+			<HomeContentCard title="QOTD">
+				<p>Coming Soon...</p>
+			</HomeContentCard>
+
+			<HomeContentCard title="Events">
+				<p>Coming Soon...</p>
+			</HomeContentCard>
+
+			<HomeContentCard title="Active Debates">
+				<p>Coming Soon...</p>
+			</HomeContentCard>
 		</ul>
 	</main>
 </Layout>
@@ -38,44 +28,35 @@ import Card from '../components/Card.astro';
 <style>
 	main {
 		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+		padding-top: 2rem;
+		max-width: 120ch;
 	}
+
 	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
+		font-size: 4rem;
+		text-align: center;
 	}
+
 	.text-gradient {
-		background-image: var(--accent-gradient);
+		font-weight: 900;
+		background-image: linear-gradient(to right, #f0e05f, #30bb73, #30e0c0);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
+		background-size: 100% 200%;
+		background-position-y: 100%;
 		border-radius: 0.4rem;
+		animation: pulse 4s ease-in-out infinite;
 	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
+
+	.quote {
+		font-style: italic;
+		text-align: center;
+		font-size: 1.5rem
 	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
+
+	.grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(38ch, 1fr));
 		gap: 1rem;
-		padding: 0;
 	}
 </style>

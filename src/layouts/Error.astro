@@ -1,0 +1,45 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+export interface Props {
+    pun: string;
+    error_no: number;
+    href: string;
+}
+
+const { pun, error_no ,href} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{error_no} | OFFD.chat</title>
+
+    <script src="https://kit.fontawesome.com/6928fbd26b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href={href}>
+        <h1>{error_no}, {pun}</h1>
+    </a>
+</body>
+</html>
+<style is:global>
+    html {
+        font-family: system-ui, sans-serif;
+        background-image: linear-gradient(to right, #f0e05f, #30bb73, #30e0c0);
+    }
+    body {
+        margin: auto;
+        padding: 1em;
+        max-width: 60ch;
+        text-align: center;
+    }
+    body a {
+        text-decoration: none;
+        color: #000;
+    }
+</style>
